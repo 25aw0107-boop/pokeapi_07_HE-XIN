@@ -1,7 +1,18 @@
 /* src/App.css */
 /* 全局背景（宝可梦天空风） */
+/* ✅ 全局：防止手机端横向溢出 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  /* ✅ 先止血：右边多一块直接消失 */
   height: 100%;
   margin: 0;
 }
@@ -66,6 +77,7 @@ body {
   border: 1px solid #d6dee3;
   outline: none;
   background: #fff;
+  margin: 0 auto;
 }
 
 .search:focus {
@@ -304,5 +316,40 @@ body {
   .modalTop {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ===============================
+   SP（スマホ）対応：検索エリア
+   =============================== */
+@media (max-width: 600px) {
+
+  .toolbar {
+    padding: 0 8px;
+  }
+
+  .searchWrap {
+    grid-template-columns: 1fr;
+    /* 输入框 + 按钮竖排 */
+    gap: 8px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .search {
+    width: 100%;
+    font-size: 16px;
+    /* 防止 iOS 放大 */
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .btn.btnGhost {
+    align-self: center;
+    /* 居中 */
+    padding: 8px 22px;
+    font-size: 14px;
+    border-radius: 999px;
+    /* 宝可梦胶囊按钮 */
   }
 }
